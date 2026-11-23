@@ -6,7 +6,7 @@ Web Native Lab は「標準HTML/CSSを知っていれば、そのUIライブラ�
 
 ## ファイル構成
 
-- public/index.html: 全デモとソース例
+- public/index.html: 全デモとソース例（EXP. 006 では datalist と select の違いを比較）
 - public/styles.css: UIとCSSの実験
 - public/app.js: dialog起動とフォーム送信結果の表示だけ
 - public/favicon.svg: アイコン
@@ -30,9 +30,18 @@ Web Native Lab は「標準HTML/CSSを知っていれば、そのUIライブラ�
 
 特にダイアログは showModal にJavaScriptを使用し、フォーム検証はHTML標準で実行していますが結果メッセージ表示にはJavaScriptを使用します。
 
-## GitHub Pages
+## 公開環境・デプロイ運用
 
-- GitHub Actionsで public/ のみアップロード
-- deployは main の push または main での手動実行のみ
-- PRではvalidateのみ、デプロイしない
-- Required status checkの推奨名: validate
+- 本番URL: https://naoiw.github.io/web-native-lab/ （GitHub Pagesで公開中）
+- PagesのSourceは **GitHub Actions**
+- `.github/workflows/site.yml` で検証後、`public/` のみデプロイ
+- `deploy` は `main` のpushまたは `main` での手動実行のみ。PRでは `validate` だけを実行する
+- `main` はRuleset `Protect main` で保護。Require status checks の設定対象は `validate`（`deploy` は対象外）
+- 公開にはNode.jsやビルドツール、シークレットは不要
+
+## datalist と select のUX上の違い
+
+- `datalist` は入力支援用。通常の `select` と異なり候補外の値も入力可能で、入力値に基づく候補の絞り込みやポップアップ操作にはブラウザ差がある
+- `select` は選択用。選択後もプルダウンから全候補を開き直せる。自由入力不可
+- EXP. 006 では、ユーザーが使い分けを体験できるように2種類を併設。どちらもJavaScript不要
+- `datalist` の見た目・候補の再表示はJavaScriptで独自に改変せず、ブラウザ標準の挙動を示す

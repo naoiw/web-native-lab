@@ -8,7 +8,7 @@
 - **No build**: Node.js、npm、ビルドツール不要
 - **Progressive enhancement**: 可能な限りHTMLとCSSのみ。必要な場合だけ少量のJavaScriptを使用
 
-公開先（Pages設定後）: https://naoiw.github.io/web-native-lab/
+**公開サイト**: https://naoiw.github.io/web-native-lab/ （GitHub Pagesで公開中）
 
 ## コンテンツ
 
@@ -19,7 +19,7 @@
 | HTML / Interaction | dialog / showModal | 開くために必要 |
 | Forms / Feedback | date / color / range | 不要 |
 | Forms / Feedback | Constraint Validation | 検証はHTML標準、デモ送信結果の表示のみJS |
-| Forms / Feedback | datalist | 不要 |
+| Forms / Feedback | datalist / select 比較 | 不要 |
 | Forms / Feedback | progress / meter | 不要（値の動的変更にはJSなどが必要） |
 | CSS / Layout | :has() | 不要 |
 | CSS / Layout | Container Queries | 不要 |
@@ -39,15 +39,24 @@
 
 外部依存なしでHTMLのローカル参照先とページ内アンカーをチェックします。完全なHTML構文バリデータではありません。
 
-## GitHub Pages
+## GitHub Pages / CI
 
-.github/workflows/site.yml で検証とデプロイを自動化しています。
+本番サイトは **https://naoiw.github.io/web-native-lab/** で公開しています。
 
-1. Settings → Pages → Build and deployment → Source を **GitHub Actions** に設定
-2. main へのpushで validate 実行後、GitHub Pagesへ公開
-3. PR時は validate のみ実行。Rulesetsでは **validate** を必須チェックに指定可能
+- GitHub Pagesの公開方式: **GitHub Actions**
+- ワークフロー: `.github/workflows/site.yml`
+- Pull Request: `validate` でローカルファイル参照とアンカーを検証（デプロイなし）
+- `main` へのpush: `validate` 成功後に `public/` を自動デプロイ
+- `main` はRuleset `Protect main` で保護（必須チェックは `validate` を推奨）
 
-デプロイ対象は public/ のみです。環境変数、シークレット、npm install は不要です。
+環境変数、シークレット、npm install は不要です。
+
+## datalist と select の使い分け
+
+- `datalist`: 入力候補を示す機能。候補外の文字列も入力可能。入力済み文字列によって候補が絞られ、選び直し方はブラウザに依存します。
+- `select`: 候補から選ぶ専用のコントロール。選択済みでもプルダウンを開き直して別の項目を選べます。
+
+実験 EXP. 006 では両方を並べて比較できます。JavaScriptは不要です。
 
 ## 設計指針
 

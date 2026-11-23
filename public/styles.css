@@ -106,9 +106,18 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .demo-form input[type="range"] { width: min(160px, 60%); }
 .validation-form { display: grid; gap: 9px; }
 .validation-form label, .stacked-label, .status-demo label { font-size: 12px; }
-.validation-form input, .wide-input { display: block; width: 100%; min-width: 0; background: #152739; border: 1px solid #385466; border-radius: 5px; padding: 11px 12px; color: var(--text); font-size: 13px; }
-.validation-form input:focus, .wide-input:focus { border-color: var(--accent); }
+.validation-form input, .wide-input, .wide-select { display: block; width: 100%; min-width: 0; background: #152739; border: 1px solid #385466; border-radius: 5px; padding: 11px 12px; color: var(--text); font-size: 13px; }
+.validation-form input:focus, .wide-input:focus, .wide-select:focus { border-color: var(--accent); }
 .validation-form output { font-size: 12px; color: var(--accent); min-height: 18px; }
+
+.choice-demo { gap: 18px; }
+.choice-field { display: grid; gap: 8px; }
+.choice-field + .choice-field { padding-top: 15px; border-top: 1px dashed #36505b; }
+.choice-field label { font-size: 12px; color: #cadce1; }
+.choice-field label code { color: var(--accent); font-size: 12px; }
+.choice-hint { color: var(--muted); font-size: 11px; line-height: 1.7; margin: 0; }
+.wide-select { color-scheme: dark; cursor: pointer; }
+.reference-group { display: flex; flex-wrap: wrap; gap: 5px 18px; }
 .status-demo label { display: flex; justify-content: space-between; }
 .status-demo label span { color: var(--accent); font-family: ui-monospace, monospace; }
 .status-demo progress, .status-demo meter { width: 100%; height: 17px; accent-color: var(--accent); margin-bottom: 10px; }
