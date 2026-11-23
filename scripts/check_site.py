@@ -18,9 +18,25 @@ class LocalReferences(HTMLParser):
         self.ids = set()
         self.links = []
         self.errors = []
+        self.experiments = 0
+        self.map_names = set()
+        self.usemaps = []
 
     def handle_starttag(self, tag, attrs):
         values = dict(attrs)
+        if "lab-card" in values.get("class", "").split():
+            self.experiments += 1
+        if tag == "map" and values.get("name"):
+            self.map_names.add(values["name"])
+        if values.get("usemap"):
+            self.usemaps.append(values["usemap"])
+        if values.get("srcset"):
+            for descriptor in values["srcset"].split(","):
+                source = descriptor.strip().split(" ")[0]
+                if source:
+                    self.links.append(source)
+        if values.get("poster"):
+            self.links.append(values["poster"])
         element_id = values.get("id")
         if element_id:
             if element_id in self.ids:
@@ -39,6 +55,11 @@ def main():
     parser = LocalReferences()
     parser.feed(INDEX.read_text(encoding="utf-8"))
     errors = list(parser.errors)
+    if parser.experiments < 23:
+        errors.append(f"expected at least 23 experiments, got {parser.experiments}")
+    for name in parser.usemaps:
+        if not name.startswith("#") or name[1:] not in parser.map_names:
+            errors.append("missing image map: " + name)
 
     for item in parser.links:
         url = urlsplit(item)
@@ -56,7 +77,7 @@ def main():
         if url.fragment and (not path or target == INDEX) and unquote(url.fragment) not in parser.ids:
             errors.append("missing fragment target: " + item)
 
-    for required in ("styles.css", "app.js", "favicon.svg", "robots.txt", "sitemap.xml"):
+    for required in ("styles.css", "app.js", "favicon.svg", "robots.txt", "sitemap.xml", "assets/picture-wide.svg", "assets/picture-narrow.svg", "assets/image-map.svg", "assets/media-poster.svg"):
         if not (PUBLIC / required).is_file():
             errors.append("missing required file: " + required)
 
