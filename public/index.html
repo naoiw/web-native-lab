@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b111c">
+  <meta name="description" content="HTMLとCSSの標準機能だけで、どこまでできる？ ブラウザ標準のUIを触って学べる実験室。">
+  <meta property="og:title" content="Web Native Lab — ブラウザ標準の実験室">
+  <meta property="og:description" content="ライブラリなしで試すHTML・CSS・Web APIの実験カタログ。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://naoiw.github.io/web-native-lab/">
+  <title>Web Native Lab — ブラウザ標準の実験室</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Web Native Lab トップへ">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      <span>WEB <strong>NATIVE</strong> LAB</span>
+    </a>
+    <nav class="header-links" aria-label="外部リンク">
+      <a href="https://developer.mozilla.org/ja/docs/Web" target="_blank" rel="noopener noreferrer">MDN <span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/naoiw/web-native-lab" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="top" aria-labelledby="hero-title">
+      <p class="eyebrow"><span class="signal" aria-hidden="true"></span> EXPERIMENTAL / WEB PLATFORM</p>
+      <h1 id="hero-title">そのUI、<br><em>標準機能</em>だけで<br>作れるかも。</h1>
+      <p class="hero-copy">HTML、CSS、そして少しのWeb API。<br>ブラウザが最初から持っている機能を、実際に操作して確かめる実験室です。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#catalog">実験を始める <span aria-hidden="true">↘</span></a>
+        <a class="button secondary" href="#principles">このサイトについて</a>
+      </div>
+      <div class="hero-facts" aria-label="技術スタック">
+        <div><strong>HTML</strong><span>Semantic first</span></div>
+        <div><strong>CSS</strong><span>Native styling</span></div>
+        <div><strong>0</strong><span>External dependencies</span></div>
+      </div>
+      <div class="hero-decoration" aria-hidden="true">
+        <div class="decoration-label">PLATFORM / NOT FRAMEWORK</div>
+        <div class="decoration-grid"><span>&lt;details&gt;</span><span>:has()</span><span>&lt;dialog&gt;</span><span>popover</span></div>
+      </div>
+    </section>
+
+    <div class="workspace shell" id="catalog">
+      <aside class="sidebar" aria-label="実験カテゴリ">
+        <p class="sidebar-label">EXPERIMENT INDEX</p>
+        <nav>
+          <a href="#semantics"><span>01</span> HTML / INTERACTION</a>
+          <a href="#forms"><span>02</span> FORMS / FEEDBACK</a>
+          <a href="#css"><span>03</span> CSS / LAYOUT</a>
+          <a href="#principles"><span>04</span> ABOUT THE LAB</a>
+        </nav>
+        <p class="sidebar-note">DEMOはその場で操作できます。<br>「ソースを見る」で実装を確認してください。</p>
+      </aside>
+
+      <div class="catalog">
+        <section class="chapter" id="semantics" aria-labelledby="semantics-title">
+          <div class="chapter-heading"><div><p class="section-kicker">01 / INTERACTION</p><h2 id="semantics-title">HTMLだけで動く、<br>意外な仕組み。</h2></div><span class="chapter-count">03 EXPERIMENTS</span></div>
+          <div class="card-grid">
+            <article class="lab-card" id="disclosure">
+              <div class="card-top"><span class="number">EXP. 001</span><span class="chip pure">NO JS</span></div>
+              <h3>開閉パネル</h3><p class="card-description">開閉状態をブラウザが管理。キーボードでも操作できます。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW</div>
+                <details class="demo-details">
+                  <summary>ブラウザ標準で開けます <span class="chevron" aria-hidden="true"></span></summary>
+                  <p>状態管理のJavaScriptも、クリック処理も不要です。</p>
+                </details>
+                <details class="demo-details">
+                  <summary>もうひとつ開いてみる <span class="chevron" aria-hidden="true"></span></summary>
+                  <p>複数のパネルを独立して開閉できます。</p>
+                </details>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;details&gt;
+  &lt;summary&gt;見出し&lt;/summary&gt;
+  &lt;p&gt;開閉する本文&lt;/p&gt;
+&lt;/details&gt;</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/details" target="_blank" rel="noopener noreferrer">MDN: details <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="lab-card" id="popover">
+              <div class="card-top"><span class="number">EXP. 002</span><span class="chip pure">NO JS</span></div>
+              <h3>ポップオーバー</h3><p class="card-description">開く・閉じる・外側を押して閉じる。標準の仕組みに任せます。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW</div><div class="popover-demo">
+                <button class="demo-button" type="button" popovertarget="native-popover">ポップオーバーを表示 <span aria-hidden="true">↗</span></button>
+                <div id="native-popover" popover class="native-popover">
+                  <strong>これはブラウザ標準です。</strong>
+                  <p>別の場所をクリックするか Esc で閉じられます。</p>
+                  <button type="button" popovertarget="native-popover" popovertargetaction="hide">閉じる</button>
+                </div>
+              </div></div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;button popovertarget="info"&gt;開く&lt;/button&gt;
+&lt;div id="info" popover&gt;
+  内容
+&lt;/div&gt;</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/API/Popover_API" target="_blank" rel="noopener noreferrer">MDN: Popover API <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="lab-card" id="dialog">
+              <div class="card-top"><span class="number">EXP. 003</span><span class="chip assisted">SMALL JS</span></div>
+              <h3>モーダルダイアログ</h3><p class="card-description">モーダル化には少量のJS。フォーカスやEsc操作はブラウザが担当。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW</div>
+                <button class="demo-button" type="button" data-open-dialog="demo-dialog">ダイアログを開く <span aria-hidden="true">↗</span></button>
+                <dialog id="demo-dialog" class="native-dialog" aria-labelledby="dialog-title">
+                  <form method="dialog">
+                    <p class="section-kicker">NATIVE DIALOG</p>
+                    <h4 id="dialog-title">標準のダイアログ</h4>
+                    <p>表示は <code>showModal()</code>。閉じるボタンは <code>method="dialog"</code> です。</p>
+                    <button class="demo-button" value="close">閉じる</button>
+                  </form>
+                </dialog>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;dialog id="dialog"&gt;
+  &lt;form method="dialog"&gt;
+    &lt;button&gt;閉じる&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+
+// 開くときだけ JavaScript
+dialog.showModal();</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/dialog" target="_blank" rel="noopener noreferrer">MDN: dialog <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+        </section>
+
+        <section class="chapter" id="forms" aria-labelledby="forms-title">
+          <div class="chapter-heading"><div><p class="section-kicker">02 / FORMS & FEEDBACK</p><h2 id="forms-title">入力も検証も、<br>まずはネイティブ。</h2></div><span class="chapter-count">04 EXPERIMENTS</span></div>
+          <div class="card-grid">
+            <article class="lab-card" id="input-types">
+              <div class="card-top"><span class="number">EXP. 004</span><span class="chip pure">NO JS</span></div>
+              <h3>標準の入力UI</h3><p class="card-description">日付、色、スライダー。OSやブラウザ固有の操作感も含めて標準です。</p>
+              <div class="demo demo-form"><div class="demo-caption">LIVE PREVIEW</div>
+                <label>日付 <input type="date" aria-label="日付を選択"></label>
+                <label>カラー <input type="color" value="#6cf3ca" aria-label="色を選択"></label>
+                <label>範囲 <input type="range" min="0" max="100" value="65" aria-label="範囲を選択"></label>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;input type="date"&gt;
+&lt;input type="color"&gt;
+&lt;input type="range" min="0"
+       max="100" value="65"&gt;</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/input" target="_blank" rel="noopener noreferrer">MDN: input <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="lab-card" id="validation">
+              <div class="card-top"><span class="number">EXP. 005</span><span class="chip assisted">SMALL JS</span></div>
+              <h3>入力チェック</h3><p class="card-description">必須・文字数・形式の検証はHTML属性で。JSは送信後の表示だけ。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW</div>
+                <form id="validation-form" class="validation-form">
+                  <label for="demo-username">ユーザーID（英数字4〜10文字）</label>
+                  <input id="demo-username" name="username" type="text" pattern="[A-Za-z0-9]{4,10}" minlength="4" maxlength="10" required autocomplete="off" placeholder="native123" title="英数字4〜10文字で入力してください">
+                  <button type="submit" class="demo-button">検証する <span aria-hidden="true">→</span></button>
+                  <output id="validation-result" aria-live="polite"></output>
+                </form>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;input required
+  pattern="[A-Za-z0-9]{4,10}"
+  minlength="4" maxlength="10"&gt;
+&lt;button type="submit"&gt;検証&lt;/button&gt;</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Constraint_validation" target="_blank" rel="noopener noreferrer">MDN: Constraint validation <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="lab-card" id="datalist">
+              <div class="card-top"><span class="number">EXP. 006</span><span class="chip pure">NO JS</span></div>
+              <h3>入力候補</h3><p class="card-description">テキスト入力に選択候補を追加。候補以外の自由入力も可能です。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW</div>
+                <label class="stacked-label" for="browser-input">好きなブラウザ</label>
+                <input id="browser-input" class="wide-input" type="text" list="browser-list" placeholder="候補から選ぶか入力">
+                <datalist id="browser-list"><option value="Firefox"><option value="Chrome"><option value="Safari"><option value="Edge"></datalist>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;input list="browsers"&gt;
+&lt;datalist id="browsers"&gt;
+  &lt;option value="Firefox"&gt;
+  &lt;option value="Chrome"&gt;
+&lt;/datalist&gt;</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/datalist" target="_blank" rel="noopener noreferrer">MDN: datalist <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="lab-card" id="status">
+              <div class="card-top"><span class="number">EXP. 007</span><span class="chip pure">NO JS</span></div>
+              <h3>進捗と測定値</h3><p class="card-description">進捗の <code>progress</code> と範囲内の値を示す <code>meter</code> は役割が違います。</p>
+              <div class="demo status-demo"><div class="demo-caption">LIVE PREVIEW</div>
+                <label for="upload-progress">アップロード進捗 <span>70%</span></label>
+                <progress id="upload-progress" max="100" value="70">70%</progress>
+                <label for="quality-meter">品質スコア <span>0.8 / 1</span></label>
+                <meter id="quality-meter" min="0" max="1" low="0.3" high="0.7" optimum="1" value="0.8">0.8</meter>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;progress value="70" max="100"&gt;
+  70%
+&lt;/progress&gt;
+&lt;meter min="0" max="1"
+  value="0.8"&gt;0.8&lt;/meter&gt;</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/meter" target="_blank" rel="noopener noreferrer">MDN: meter <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+        </section>
+
+        <section class="chapter" id="css" aria-labelledby="css-title">
+          <div class="chapter-heading"><div><p class="section-kicker">03 / CSS FEATURES</p><h2 id="css-title">スタイルシートも、<br>立派なロジック。</h2></div><span class="chapter-count">03 EXPERIMENTS</span></div>
+          <div class="card-grid">
+            <article class="lab-card" id="has-selector">
+              <div class="card-top"><span class="number">EXP. 008</span><span class="chip pure">NO JS</span></div>
+              <h3>状態による見た目の変更</h3><p class="card-description"><code>:has()</code> でチェックボックスの状態を読み、親要素のスタイルを切り替えます。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW</div>
+                <div class="theme-sample">
+                  <label class="theme-toggle"><input type="checkbox"> <span>ナイトモード</span></label>
+                  <div class="theme-preview"><strong>CSS-powered UI</strong><small>チェックで配色が切り替わります。</small></div>
+                </div>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>.preview { background: white; }
+.wrapper:has(input:checked)
+  .preview { background: #111827; }</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/CSS/:has" target="_blank" rel="noopener noreferrer">MDN: :has() <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="lab-card" id="container-queries">
+              <div class="card-top"><span class="number">EXP. 009</span><span class="chip pure">NO JS</span></div>
+              <h3>コンテナクエリ</h3><p class="card-description">画面全体ではなく、部品が入る領域の幅に合わせてレイアウトを変更。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW / RESIZE ON DESKTOP</div>
+                <div class="container-demo" aria-label="右下をドラッグして幅を変更できます">
+                  <div class="container-inner"><span class="container-avatar" aria-hidden="true">◈</span><div><strong>Adaptive card</strong><small>コンテナの幅で配置が変わる</small></div></div>
+                </div>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>.wrapper { container-type: inline-size; }
+@container (min-width: 260px) {
+  .card { display: flex; }
+}</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_containment/Container_size_and_style_queries" target="_blank" rel="noopener noreferrer">MDN: Container queries <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="lab-card" id="scroll-snap">
+              <div class="card-top"><span class="number">EXP. 010</span><span class="chip pure">NO JS</span></div>
+              <h3>スクロールスナップ</h3><p class="card-description">横にスクロールすると、カードが定位置に吸着します。</p>
+              <div class="demo"><div class="demo-caption">LIVE PREVIEW / SCROLL →</div>
+                <div class="snap-list" tabindex="0" aria-label="スクロール可能なカードの一覧">
+                  <div class="snap-item"><span>01</span><strong>HTML</strong></div>
+                  <div class="snap-item"><span>02</span><strong>CSS</strong></div>
+                  <div class="snap-item"><span>03</span><strong>WEB</strong></div>
+                  <div class="snap-item"><span>04</span><strong>NATIVE</strong></div>
+                </div>
+              </div>
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>.list {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.item { scroll-snap-align: start; }</code></pre></details>
+              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_scroll_snap" target="_blank" rel="noopener noreferrer">MDN: Scroll snap <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+        </section>
+
+        <section class="about" id="principles" aria-labelledby="about-title">
+          <p class="section-kicker">04 / ABOUT THE LAB</p>
+          <h2 id="about-title">必要なものだけ、使う。</h2>
+          <p>このサイトは依存パッケージなしの静的HTML/CSSで作っています。動作するデモの大半はJavaScript不要です。ダイアログの起動とフォーム送信結果の表示だけ、最小限のJavaScriptを使用しています。</p>
+          <div class="principles"><div><span>01</span><strong>まず標準機能</strong><p>ネイティブ要素でできることを優先。</p></div><div><span>02</span><strong>違いも記録</strong><p>OS・ブラウザによって外観が変わることも学び。</p></div><div><span>03</span><strong>触って確かめる</strong><p>説明より先に、実際のUIを操作する。</p></div></div>
+          <a class="button secondary" href="https://github.com/naoiw/web-native-lab" target="_blank" rel="noopener noreferrer">ソースコードを見る <span aria-hidden="true">↗</span></a>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer shell"><span>WEB NATIVE LAB <span class="footer-dot" aria-hidden="true">●</span> BUILT WITH THE PLATFORM</span><span>© 2026 <a href="https://github.com/naoiw">naoiw</a></span></footer>
+</body>
+</html>
