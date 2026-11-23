@@ -6,9 +6,10 @@ Web Native Lab は「標準HTML/CSSを知っていれば、そのUIライブラ�
 
 ## ファイル構成
 
-- public/index.html: 全デモとソース例（EXP. 006 では datalist と select の違いを比較）
+- public/index.html: 23実験とソース例（EXP. 006 では datalist と select の違いを比較）
 - public/styles.css: UIとCSSの実験
-- public/app.js: dialog起動とフォーム送信結果の表示だけ
+- public/app.js: dialog起動、フォーム送信結果の表示、output計算結果の更新のみ
+- public/assets/: picture切り替え・イメージマップ・動画posterのローカルSVG
 - public/favicon.svg: アイコン
 - public/robots.txt / sitemap.xml: クローラー向け
 - scripts/check_site.py: ビルド不要の参照チェック
@@ -17,7 +18,7 @@ Web Native Lab は「標準HTML/CSSを知っていれば、そのUIライブラ�
 ## 実験追加ルール
 
 1. デモに固有のアンカー、タイトル、説明を付ける
-2. NO JS / SMALL JS を正確に付ける
+2. NO JS / SMALL JS / EXPERIMENTAL を正確に付ける
 3. ブラウザで操作できるプレビューを用意する
 4. ソースを最小コードで示し、実装と意味が食い違わないようにする
 5. MDNへのリンクを付ける
@@ -28,7 +29,15 @@ Web Native Lab は「標準HTML/CSSを知っていれば、そのUIライブラ�
 
 ブラウザのバージョン、OS、ユーザー設定で一部の表示・挙動は異なります。本サイトは機能の存在を示すものであり、完全な互換性を保証しません。
 
-特にダイアログは showModal にJavaScriptを使用し、フォーム検証はHTML標準で実行していますが結果メッセージ表示にはJavaScriptを使用します。
+ダイアログは `showModal()` にJavaScriptを使用し、フォームの検証はHTML標準で実行していますが結果メッセージ表示にはJavaScriptを使用します。EXP. 015の `output` 計算結果を動的更新するためにもJavaScriptを使います。
+
+- EXP. 016: `details[name]` の排他的開閉には対応ブラウザが必要
+- EXP. 018: `picture` はviewport幅800pxを境に画像が切り替わり、コンテナ幅を変更しても画像は切り替わらない
+- EXP. 019: イメージマップは固定座標（300×160）。デモは縮小せず横スクロールさせる
+- EXP. 020: audio/videoタグは標準だが、ソースのみMDNのCC0外部メディアを使用する。オフラインでは再生不可
+- EXP. 022: 宣言的Shadow DOMはHTMLパーサーで生成するため、コンテンツをinnerHTMLで後挿入する場合と挙動が異なる
+- EXP. 023: selectedcontentとcustomizable selectはブラウザ対応状況に差がある。非対応環境では通常のselectにフォールバック
+- file inputのファイルはブラウザ内で選択するだけであり、外部へのアップロードは行わない
 
 ## 公開環境・デプロイ運用
 

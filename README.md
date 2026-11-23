@@ -1,6 +1,6 @@
 # Web Native Lab
 
-ブラウザ標準のHTML・CSS・Web APIを、実際に触って確かめる実験カタログです。
+ブラウザ標準のHTML・CSS・Web APIを、実際に触って確かめる **23種類の実験カタログ** です。
 
 - **Live demo**: ページ上でそのまま操作
 - **Source**: 各サンプルの「ソースを見る」から最小実装を確認
@@ -24,6 +24,33 @@
 | CSS / Layout | :has() | 不要 |
 | CSS / Layout | Container Queries | 不要 |
 | CSS / Layout | Scroll Snap | 不要 |
+| Advanced Forms | fieldset | 不要 |
+| Advanced Forms | optgroup | 不要 |
+| Advanced Forms | select multiple | 不要 |
+| Advanced Forms | file input | 不要 |
+| Advanced Forms | output | 入力に応じた計算結果の更新のみ必要 |
+| Semantic / Media | exclusive details | 不要 |
+| Semantic / Media | ruby | 不要 |
+| Semantic / Media | picture | 不要 |
+| Semantic / Media | image map | 不要 |
+| Semantic / Media | native media | 不要 |
+| Semantic / Media | search element | 不要 |
+| Components / Experimental | shadow template | 不要 |
+| Components / Experimental | selectedcontent | 不要（対応ブラウザに差あり） |
+
+## 実験カテゴリ
+
+1. **HTML / Interaction**: details、Popover、Dialog
+2. **Forms / Feedback**: 入力フォーム、検証、datalist/select比較、進捗
+3. **CSS / Layout**: :has()、Container Queries、Scroll Snap
+4. **Advanced Forms**: fieldset、optgroup、multiple、file、output
+5. **Semantic / Media**: details[name]、ruby、picture、画像マップ、audio/video、search
+6. **Components / Experimental**: 宣言的Shadow DOM、selectedcontent
+
+**実験の分類**: `NO JS`（JavaScriptなし）、`SMALL JS`（操作更新に必要）、`EXPERIMENTAL`（対応状況に注意）。
+`selectedcontent` はブラウザ対応に差があり、非対応時は通常の `select` にフォールバックします。
+画像マップは固定座標のため、画像を縮小せず横スクロール可能にしています。
+音声・動画のデモのみMDNのCC0公開サンプルを参照するため、再生にはネット接続が必要です。デモ以外のコード・UIに外部依存はありません。
 
 ## ローカル実行
 
@@ -60,7 +87,7 @@
 
 ## 設計指針
 
-- サンプルの **NO JS / SMALL JS** を明示
+- サンプルの **NO JS / SMALL JS / EXPERIMENTAL** を明示
 - すべてのサンプルにMDNの参照リンクを付与
 - ブラウザによる実装や外観の違いは自然なものとして扱う
 - アクセシビリティを優先し、キーボードで試せるようにする

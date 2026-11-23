@@ -186,3 +186,47 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   :root { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
+
+/* Additional native HTML experiments */
+.chip.experimental { background: #baa4ff1a; color: #d8bcff; }
+.experiment-demo { gap: 12px; }
+.lab-label { display: block; font-size: 12px; color: #cadce1; }
+.lab-fieldset { display: grid; gap: 9px; border: 1px solid #42616c; border-radius: 6px; padding: 11px 13px; }
+.lab-fieldset legend { font-size: 12px; font-weight: 700; padding-inline: 6px; color: var(--accent); }
+.lab-fieldset label { font-size: 12px; display: flex; align-items: center; gap: 7px; }
+.lab-fieldset input { accent-color: var(--accent); }
+.lab-fieldset:disabled, .lab-fieldset[disabled] { opacity: .55; }
+.experiment-demo select.wide-select { color-scheme: dark; }
+.multi-select { min-height: 117px; }
+.multi-select option { padding: 5px 10px; }
+.multi-select option:checked { background: #294f53 linear-gradient(#294f53, #294f53); color: #a5ffdf; }
+.demo-note { color: var(--muted); font-size: 11px; line-height: 1.8; margin: 0; }
+.file-control { max-width: 100%; width: 100%; color: #b8ced4; font-size: 12px; }
+.file-control::file-selector-button { border: 1px solid #6dcbae; color: #b9ffe3; border-radius: 4px; background: #1f413d; padding: 8px 10px; margin-right: 10px; font: inherit; cursor: pointer; }
+.addition-form { display: grid; gap: 14px; }
+.addition-form label { display: flex; gap: 14px; align-items: center; justify-content: space-between; font-size: 12px; }
+.addition-form input { width: 80%; accent-color: var(--accent); }
+.addition-form p { display: flex; gap: 12px; align-items: center; margin: 2px 0 0; font-size: 13px; }
+.addition-form output { color: var(--accent); font: 700 22px ui-monospace, monospace; }
+.ruby-demo { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; font-size: clamp(22px, 3vw, 28px); padding: 16px 0 4px; }
+.ruby-demo rt { color: var(--accent); font-size: 12px; }
+.picture-demo { display: block; }
+.picture-demo img { display: block; max-width: 100%; width: 100%; height: auto; border: 1px solid #3a6573; border-radius: 6px; }
+.image-map-demo { max-width: 100%; overflow-x: auto; scrollbar-color: #507c7a transparent; }
+.image-map-demo img { display: block; width: 300px; height: 160px; max-width: none; border: 1px solid #345966; border-radius: 6px; }
+.experiment-demo audio { width: 100%; max-width: 100%; }
+.experiment-demo video { width: 100%; max-width: 300px; height: auto; border-radius: 6px; background: #142536; }
+.search-demo { display: grid; gap: 9px; }
+.search-demo label { font-size: 12px; }
+.search-demo-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.search-demo input { flex: 1 1 110px; min-width: 0; color: var(--text); background: #152739; border: 1px solid #385466; border-radius: 5px; padding: 10px; font: inherit; font-size: 13px; }
+.search-demo button { flex: 0 0 auto; }
+.shadow-demo { display: grid; gap: 8px; }
+.shadow-host { display: block; min-height: 60px; }
+.base-select { display: block; width: 100%; max-width: 100%; background: #152739; color: var(--text); border: 1px solid #385466; border-radius: 5px; padding: 10px 12px; font: inherit; font-size: 13px; }
+@supports (appearance: base-select) {
+  .base-select, .base-select::picker(select) { appearance: base-select; }
+  .base-select::picker(select) { background: #182c3d; color: var(--text); border: 1px solid #648783; border-radius: 8px; padding: 4px; }
+  .base-select option { padding: 9px; border-radius: 4px; }
+  .base-select option:hover { background: #294d52; }
+}
