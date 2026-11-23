@@ -162,18 +162,42 @@ dialog.showModal();</code></pre></details>
             </article>
             <article class="lab-card" id="datalist">
               <div class="card-top"><span class="number">EXP. 006</span><span class="chip pure">NO JS</span></div>
-              <h3>入力候補</h3><p class="card-description">テキスト入力に選択候補を追加。候補以外の自由入力も可能です。</p>
-              <div class="demo"><div class="demo-caption">LIVE PREVIEW</div>
-                <label class="stacked-label" for="browser-input">好きなブラウザ</label>
-                <input id="browser-input" class="wide-input" type="text" list="browser-list" placeholder="候補から選ぶか入力">
-                <datalist id="browser-list"><option value="Firefox"><option value="Chrome"><option value="Safari"><option value="Edge"></datalist>
+              <h3>候補入力とプルダウン</h3><p class="card-description"><code>datalist</code> は自由入力できる候補リスト、<code>select</code> は何度でも選び直せる選択リスト。用途の違いを比べます。</p>
+              <div class="demo choice-demo"><div class="demo-caption">LIVE PREVIEW / COMPARE</div>
+                <div class="choice-field">
+                  <label for="browser-input"><code>datalist</code> / 自由入力と補完</label>
+                  <input id="browser-input" class="wide-input" type="search" list="browser-list" autocomplete="off" placeholder="入力するか候補から選択">
+                  <datalist id="browser-list"><option value="Firefox"><option value="Chrome"><option value="Safari"><option value="Edge"></datalist>
+                  <p class="choice-hint">入力した文字で候補が絞られます。別の候補を探す場合は文字を消してください。</p>
+                </div>
+                <div class="choice-field">
+                  <label for="browser-select"><code>select</code> / 繰り返し選択</label>
+                  <select id="browser-select" class="wide-select">
+                    <option value="">ブラウザを選択してください</option>
+                    <option value="Firefox">Firefox</option>
+                    <option value="Chrome">Chrome</option>
+                    <option value="Safari">Safari</option>
+                    <option value="Edge">Edge</option>
+                  </select>
+                  <p class="choice-hint">選択後も ▽ から全候補を再表示できます。候補以外の自由入力はできません。</p>
+                </div>
               </div>
-              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;input list="browsers"&gt;
+              <details class="source"><summary>ソースを見る <span aria-hidden="true">＋</span></summary><pre><code>&lt;!-- 自由入力できる候補リスト --&gt;
+&lt;input type="search" list="browsers"&gt;
 &lt;datalist id="browsers"&gt;
   &lt;option value="Firefox"&gt;
   &lt;option value="Chrome"&gt;
-&lt;/datalist&gt;</code></pre></details>
-              <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/datalist" target="_blank" rel="noopener noreferrer">MDN: datalist <span aria-hidden="true">↗</span></a>
+&lt;/datalist&gt;
+
+&lt;!-- 何度でも選択できるリスト --&gt;
+&lt;select&gt;
+  &lt;option&gt;Firefox&lt;/option&gt;
+  &lt;option&gt;Chrome&lt;/option&gt;
+&lt;/select&gt;</code></pre></details>
+              <div class="reference-group">
+                <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements/datalist" target="_blank" rel="noopener noreferrer">MDN: datalist <span aria-hidden="true">↗</span></a>
+                <a class="reference" href="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Elements/select" target="_blank" rel="noopener noreferrer">MDN: select <span aria-hidden="true">↗</span></a>
+              </div>
             </article>
             <article class="lab-card" id="status">
               <div class="card-top"><span class="number">EXP. 007</span><span class="chip pure">NO JS</span></div>
