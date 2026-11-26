@@ -230,3 +230,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .base-select option { padding: 9px; border-radius: 4px; }
   .base-select option:hover { background: #294d52; }
 }
+
+/* Keep all three header links visible on narrow screens. */
+@media (max-width: 520px) {
+  .site-header { flex-wrap: wrap; column-gap: 10px; row-gap: 0; padding-top: 12px; }
+  .header-links { width: 100%; justify-content: flex-end; gap: 20px; padding-block: 11px 12px; }
+  .header-links a { font-size: 11px; white-space: nowrap; }
+}
