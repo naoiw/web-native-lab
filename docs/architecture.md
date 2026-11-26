@@ -8,12 +8,17 @@ Web Native Lab は「標準HTML/CSSを知っていれば、そのUIライブラ�
 
 - public/index.html: 23実験とソース例（EXP. 006 では datalist と select の違いを比較）
 - public/styles.css: UIとCSSの実験
+- public/lab-chrome.css: 姉妹サイト共通のヘッダー・フッターとコンテンツ幅
 - public/app.js: dialog起動、フォーム送信結果の表示、output計算結果の更新のみ
 - public/assets/: picture切り替え・イメージマップ・動画posterのローカルSVG
 - public/favicon.svg: アイコン
 - public/robots.txt / sitemap.xml: クローラー向け
 - scripts/check_site.py: ビルド不要の参照チェック
 - .github/workflows/site.yml: PR検証 + mainデプロイ
+
+## 共通ヘッダー・フッター
+
+`public/lab-chrome.css` は `naoiw/web-native-lab` と `naoiw/css-native-lab` で同一内容です。最大コンテンツ幅を1360pxに統一し、ヘッダー・フッターのフォント、文字サイズ、間隔、スマホ表示も一致させています。サイト名・ロゴ記号・アクセントカラー・MDNリンク先は各サイト固有です。共通デザインを変更する際は両方のCSSを更新してください。CSSファイルはそれぞれのリポジトリ内で配信し、相互のデプロイには依存しません。
 
 ## 実験追加ルール
 
